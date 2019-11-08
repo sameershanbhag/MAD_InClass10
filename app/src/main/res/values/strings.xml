@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">InClass10_Main</string>
+    <string name="addmovie">Add Movie</string>
+    <string name="edit">Edit</string>
+    <string name="deletemovie">Delete Movie</string>
+    <string name="showlistbyyear">Show List by Year</string>
+    <string name="showlistbyrating">Show List by Rating</string>
+    <string name="name">Name:</string>
+    <string name="description">Description:</string>
+    <string name="genre">Genre:</string>
+    <string name="rating">Rating:</string>
+    <string name="year">Year:</string>
+    <string name="imdb">IMDB:</string>
+    <string name="savechanges">Save Changes</string>
+    <string name="tv_static_mby">Movies By Year</string>
+    <string name="tv_static_title">Title :</string>
+    <string name="tv_static_description">Description :</string>
+    <string name="tv_static_genre">Genre :</string>
+    <string name="tv_static_rating">Rating :</string>
+    <string name="tv_static_year">Year :</string>
+    <string name="tv_static_imdb">IMDB :</string>
+    <string name="first">First</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="last">Last</string>
+    <string name="movies_by_rating">Movies by Rating</string>
+    <string name="finish">Finish</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
