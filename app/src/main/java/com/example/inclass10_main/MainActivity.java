@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityFragm
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container, new MainActivityFragment(), "mainActivity")
+                .addToBackStack(null)
                 .commit();
     }
 }

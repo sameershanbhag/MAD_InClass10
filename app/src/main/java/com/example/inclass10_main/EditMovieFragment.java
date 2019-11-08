@@ -280,6 +280,7 @@ public class EditMovieFragment extends Fragment implements AdapterView.OnItemSel
                 Toast.makeText(getActivity(), message.obj.toString(), Toast.LENGTH_SHORT).show();
                 Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, new MainActivityFragment(), "mainActivity")
+                        .addToBackStack(null)
                         .commit();
             }
         }

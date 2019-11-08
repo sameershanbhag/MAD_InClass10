@@ -210,6 +210,7 @@ public class ShowByFragment extends Fragment {
                 public void onClick(View view) {
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.container, new MainActivityFragment(), "mainActivity")
+                            .addToBackStack(null)
                             .commit();
                 }
             });

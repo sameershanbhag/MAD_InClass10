@@ -52,6 +52,20 @@ public class MainActivityFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        movieDB.collection("Movies")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for(QueryDocumentSnapshot queryDocumentSnapshot: Objects.requireNonNull(task.getResult())){
+                                Movies getMovie = new Movies(queryDocumentSnapshot.getData());
+                                movieList.add(getMovie);
+                                movieNames.add(getMovie.getMovieName());
+                            }
+                        }
+                    }
+                });
     }
 
     @Override
@@ -63,6 +77,7 @@ public class MainActivityFragment extends Fragment{
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, new AddMovieFragment(), "addMovieFragment")
+                        .addToBackStack(null)
                         .commit();
             }
         });
@@ -81,11 +96,10 @@ public class MainActivityFragment extends Fragment{
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Movies movie = movieList.get(i);
-                                    movieList.remove(i);
-                                    movieNames.remove(i);
-
+                                    
                                     getActivity().getSupportFragmentManager().beginTransaction()
                                             .replace(R.id.container, new EditMovieFragment(movie, movie.getMovieID()), "editMovieFragment")
+                                            .addToBackStack(null)
                                             .commit();
                                 }
                             });
@@ -151,6 +165,7 @@ public class MainActivityFragment extends Fragment{
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, new ShowByFragment("rating"), "showMovieFragment")
+                        .addToBackStack(null)
                         .commit();
             }
         });
@@ -160,6 +175,7 @@ public class MainActivityFragment extends Fragment{
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, new ShowByFragment("year"), "showMovieFragment")
+                        .addToBackStack(null)
                         .commit();
             }
         });
@@ -179,21 +195,6 @@ public class MainActivityFragment extends Fragment{
         bt_showbyrating = view.findViewById(R.id.bt_showbyrating);
         bt_showbyyear = view.findViewById(R.id.bt_showbyyear);
 
-
-        movieDB.collection("Movies")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for(QueryDocumentSnapshot queryDocumentSnapshot: Objects.requireNonNull(task.getResult())){
-                                Movies getMovie = new Movies(queryDocumentSnapshot.getData());
-                                movieList.add(getMovie);
-                                movieNames.add(getMovie.getMovieName());
-                                }
-                            }
-                        }
-                    });
         return view;
     }
 
