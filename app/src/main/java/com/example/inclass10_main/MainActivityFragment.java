@@ -1,5 +1,14 @@
 package com.example.inclass10_main;
 
+
+/*
+*
+* Author : Sameer Shanbhag
+* Email : sshanbh1@uncc.edu
+* Student ID : 801099638
+*
+* */
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -96,7 +105,6 @@ public class MainActivityFragment extends Fragment{
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Movies movie = movieList.get(i);
-                                    
                                     getActivity().getSupportFragmentManager().beginTransaction()
                                             .replace(R.id.container, new EditMovieFragment(movie, movie.getMovieID()), "editMovieFragment")
                                             .addToBackStack(null)
